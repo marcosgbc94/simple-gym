@@ -10,10 +10,17 @@ export class MuscleZoneEntity {
         public readonly deletedAt: Date | null
     ) {}
 
-   
+   /**
+    * Obtiene los datos limpios
+    */
     public static reconstitute(
-        id: string, name: string, description: string | null,
-        isActive: boolean, observations: string | null, deletedAt: Date | null
+        id: string, 
+        name: string, 
+        description: string | null,
+        isActive: 
+        boolean, 
+        observations: string | null, 
+        deletedAt: Date | null
     ): MuscleZoneEntity {
         return new MuscleZoneEntity(id, name, description, isActive, observations, deletedAt);
     }

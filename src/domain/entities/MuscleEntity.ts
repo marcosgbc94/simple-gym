@@ -11,6 +11,9 @@ export class MuscleEntity {
         public readonly deletedAt: Date | null
     ) {}
 
+    /**
+     * Obtiene los datos limpios
+     */
     public static reconstitute(
         id: string,
         groupId: string,
