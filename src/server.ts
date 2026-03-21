@@ -1,11 +1,13 @@
+import "reflect-metadata";
+import "./infrastructure/container";
 import app from './app';
+import dotenv from 'dotenv';
 
-// Usamos el puerto de las variables de entorno, o el 3000 por defecto
+dotenv.config();
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor de gimnasio corriendo en http://localhost:${PORT}`);
-    console.log(`Endpoints disponibles:`);
+    console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
     console.log(`➡️  POST http://localhost:${PORT}/api/v1/muscles`);
-    console.log(`➡️  GET  http://localhost:${PORT}/api/v1/muscles/:id`);
 });

@@ -2,7 +2,9 @@
 import { Request, Response } from 'express';
 import { GetMuscleByIdUseCase } from '../../application/use-cases/GetMuscleByIdUseCase';
 import { MuscleResponseDTO } from '../dto/MuscleDTO';
+import { injectable } from 'tsyringe';
 
+@injectable()
 export class MuscleController {
 
     constructor(private readonly getMuscleByIdUseCase: GetMuscleByIdUseCase) {}
@@ -14,6 +16,13 @@ export class MuscleController {
             return res.status(400).json({
                 success: false,
                 error: "El ID del músculo es obligatorio."
+            });
+        }
+
+        if (typeof id !== 'string') {
+            return res.status(400).json({
+                success: false,
+                error: 'El ID proporcionado no es válido.'
             });
         }
 

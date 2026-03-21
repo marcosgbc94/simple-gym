@@ -1,10 +1,11 @@
+import { inject, injectable } from 'tsyringe';
 import { MuscleEntity } from '../../domain/entities/MuscleEntity';
-import { MuscleRepository } from '../../domain/repositories/MuscleRepository';
+import type { MuscleRepository } from '../../domain/repositories/MuscleRepository';
 import { Result } from '../../shared/Result';
 
+@injectable()
 export class GetMuscleByIdUseCase {
-    
-    constructor(private readonly muscleRepository: MuscleRepository) {}
+    constructor(@inject("MuscleRepository") private readonly muscleRepository: MuscleRepository) {}
 
     public async execute(id: string): Promise<Result<MuscleEntity>> {
         const muscleResult = await this.muscleRepository.getMuscleById(id);
