@@ -1,6 +1,6 @@
 // src/modules/muscles/presentation/muscle.controller.ts
 import { Request, Response } from 'express';
-import { GetMuscleByIdUseCase } from '../../application/use-cases/GetMuscleByIdUseCase';
+import { GetMuscleByIdUseCase } from '../../application/useCases/GetMuscleByIdUseCase';
 import { MuscleResponseDTO } from '../dto/MuscleDTO';
 import { injectable } from 'tsyringe';
 

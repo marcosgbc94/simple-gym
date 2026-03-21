@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev src/server.ts",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "keywords": [],
   "author": "",
