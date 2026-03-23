@@ -4,7 +4,9 @@ import { MuscleEntity } from '../../domain/entities/MuscleEntity';
 import { MuscleRepository } from '../../domain/repositories/MuscleRepository';
 import { MuscleMapper } from '../mappers/MuscleMapper';
 import { Result } from '../../shared/Result';
+import { injectable } from 'tsyringe';
 
+@injectable()
 export class MuscleRepositorySupabase implements MuscleRepository {
 
     /**

@@ -33,6 +33,7 @@ Configurar el `.env`
 PORT=
 SUPABASE_URL=
 SUPABASE_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
 ```
 
 `npm run dev`

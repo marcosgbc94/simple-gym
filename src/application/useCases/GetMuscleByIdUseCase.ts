@@ -11,7 +11,7 @@ export class GetMuscleByIdUseCase {
         const muscleResult = await this.muscleRepository.getMuscleById(id);
 
         if (muscleResult.isFailure) {
-            return Result.fail(muscleResult.errorValue, muscleResult.code);
+            return Result.fail(muscleResult.errorValue, muscleResult.code, muscleResult.numCode);
         }
 
         const muscle = muscleResult.getValue();

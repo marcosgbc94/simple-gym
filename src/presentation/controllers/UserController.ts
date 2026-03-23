@@ -1,12 +1,11 @@
+import { injectable } from "tsyringe";
 import { Request, Response } from 'express';
-import { GetMuscleByIdUseCase } from '../../application/useCases/GetMuscleByIdUseCase';
-import { MuscleResponseDTO } from '../dto/MuscleDTO';
-import { injectable } from 'tsyringe';
+import { GetUserByIdUserCase } from "../../application/useCases/GetUserByIdUserCase";
+import { UserResponseDTO } from "../dto/UserDTO";
 
 @injectable()
-export class MuscleController {
-
-    constructor(private readonly getMuscleByIdUseCase: GetMuscleByIdUseCase) {}
+export class UserController {
+    constructor(private readonly getUserByIdUseCase: GetUserByIdUserCase) {}
 
     public async getById(req: Request, res: Response): Promise<Response> {
         const { id } = req.params;
@@ -14,7 +13,7 @@ export class MuscleController {
         if (!id) {
             return res.status(400).json({
                 success: false,
-                error: "El ID del músculo es obligatorio."
+                error: "El ID del usuario es obligatorio."
             });
         }
 
@@ -25,7 +24,7 @@ export class MuscleController {
             });
         }
 
-        const result = await this.getMuscleByIdUseCase.execute(id);
+        const result = await this.getUserByIdUseCase.execute(id);
 
         if (result.isFailure) {
             const status = result.numCode;
@@ -36,7 +35,7 @@ export class MuscleController {
         }
 
         const muscleEntity = result.getValue();
-        const responseDTO = MuscleResponseDTO.fromEntity(muscleEntity);
+        const responseDTO = UserResponseDTO.fromEntity(muscleEntity);
 
         return res.status(200).json({
             success: true,
