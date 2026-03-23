@@ -1,4 +1,5 @@
 import { MuscleEntity } from "../../domain/entities/MuscleEntity";
+import { MuscleResponse } from "../http/validations/muscleSchema";
 
 export class MuscleResponseDTO {
     /**
@@ -12,5 +13,9 @@ export class MuscleResponseDTO {
             description: entity.description || "Sin descripción",
             isActive: entity.isActive
         };
+    }
+
+    static fromEntities(entities: MuscleEntity[]): MuscleResponse[] {
+        return entities.map(entity => this.fromEntity(entity));
     }
 }

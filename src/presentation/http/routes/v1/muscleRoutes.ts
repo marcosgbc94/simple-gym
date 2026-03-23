@@ -18,7 +18,7 @@ const controller = container.resolve(MuscleController);
  *      required: true
  *      description: Identificador único del músculo
  *      schema:
- *      type: string
+ *          type: string
  *   responses:
  *    200:
  *     description: Músculo encontrado con éxito
