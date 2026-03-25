@@ -14,6 +14,20 @@ const options: swaggerJSDoc.Options = {
         description: 'Servidor Local',
       },
     ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+    security: [
+      {
+        bearerAuth: [],
+      },
+    ],
   },
   // Rutas donde Swagger buscará los comentarios de documentación
   apis: [

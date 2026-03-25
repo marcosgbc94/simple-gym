@@ -1,6 +1,7 @@
 // src/modules/muscles/presentation/muscle.routes.ts
 import { Router } from "express";
 import { MuscleController } from "../../../controllers/MuscleController";
+import { authMiddleware } from '../../../../infrastructure/http/middlewares/AuthMiddleware';
 import { container } from "tsyringe";
 
 const muscleRouter = Router();
@@ -12,6 +13,8 @@ const controller = container.resolve(MuscleController);
  * /muscles/{id}:
  *  get:
  *   summary: Obtener un músculo por ID
+ *   security:
+ *    - bearerAuth: []
  *   parameters:
  *    - in: path
  *      name: id
@@ -25,6 +28,6 @@ const controller = container.resolve(MuscleController);
  *    404:
  *     description: No se encontró el músculo
  */
-muscleRouter.get("/:id", (req, res) => controller.getById(req, res));
+muscleRouter.get("/:id", authMiddleware, (req, res) => controller.getById(req, res));
 
 export { muscleRouter };

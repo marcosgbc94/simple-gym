@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { UserController } from "../../../controllers/UserController";
+import { authMiddleware } from '../../../../infrastructure/http/middlewares/AuthMiddleware';
 import { container } from "tsyringe";
 
 const userRouter = Router();
@@ -11,6 +12,8 @@ const controller = container.resolve(UserController);
  * /users/{id}:
  *  get:
  *   summary: Obtener un usuario por ID
+ *   security:
+ *    - bearerAuth: []
  *   parameters:
  *    - in: path
  *      name: id
@@ -24,6 +27,6 @@ const controller = container.resolve(UserController);
  *    404:
  *     description: No se encontró el usuario
  */
-userRouter.get("/:id", (req, res) => controller.getById(req, res));
+userRouter.get("/:id", authMiddleware, (req, res) => controller.getById(req, res));
 
 export { userRouter };
